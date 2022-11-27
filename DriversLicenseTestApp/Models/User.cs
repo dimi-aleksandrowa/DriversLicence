@@ -19,35 +19,39 @@ namespace DriversLicenseTestApp.Models
             username = this.username;
             password = this.password;
         }
-        public User(string username, string password, string email) 
+        public User(string username, string password, string email)
         {
             username = this.username;
             password = this.password;
             email = this.email;
         }
 
-        public void setUsername(string username) 
+        public void setUsername(string username)
         {
             username = this.username;
         }
-        public void setPassword(string password) 
+
+        public void setPassword(string password)
         {
             password = this.password;
         }
-        public void setEmail(string email) 
+
+        public void setEmail(string email)
         {
             email = this.email;
         }
 
-        public string getUsername() 
+        public string getUsername()
         {
             return this.username;
         }
+
         public string getPassword()
         {
             return this.password;
         }
-        public string getEmail() 
+
+        public string getEmail()
         {
             return this.email;
         }

@@ -31,7 +31,7 @@ namespace DriversLicenseTestApp.Models
 
         public void uploadPicture(MySqlConnection connection)
         {
-            
+
         }
     }
 }

@@ -20,32 +20,40 @@ namespace DriversLicenseTestApp
         private void btn_AddQuestion_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             AddQuestion add = new AddQuestion();
             add.ShowDialog();
+
             this.Close();
         }
 
         private void btn_CorrectQuestion_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             CorrectQuestion correct = new CorrectQuestion();
             correct.ShowDialog();
+
             this.Close();
         }
 
         private void btn_DeleteQuestion_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             DeleteQuestion del = new DeleteQuestion();
             del.ShowDialog();
+
             this.Close();
         }
 
         private void linkBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
+
             Login log = new Login();
             log.ShowDialog();
+
             this.Close();
         }
 

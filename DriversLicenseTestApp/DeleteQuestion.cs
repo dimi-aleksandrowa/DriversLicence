@@ -17,30 +17,35 @@ namespace DriversLicenseTestApp
         MySqlConnection conn;
         MySqlCommand command;
         MySqlDataAdapter ad;
+
         int ID = 0;
 
         public DeleteQuestion()
         {
             InitializeComponent();
+
             string query = @"SELECT questions.question_id, questions.question, question_type.type, answers.answer, answers.isCorrect
                              FROM questions 
                              JOIN question_type 
                              ON questions.question_id=type_id
                              JOIN answers
                              ON questions.question_id=answers.question_id";
+
             try
             {
-
                 displayData(query);
             }
             catch (Exception e)
-            { MessageBox.Show(e.Message); }
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         public void displayData(string query)
         {
             using (conn = new MySqlConnection(connStr))
             {
                 conn.Open();
+
                 DataTable dt = new DataTable();
                 ad = new MySqlDataAdapter(query, conn);
                 ad.Fill(dt);
@@ -57,11 +62,13 @@ namespace DriversLicenseTestApp
                     command = new MySqlCommand(@"DELETE questions WHERE question_id =@id 
                                                 DELETE question_type WHERE type_id=@id
                                                 DELETE answers WHERE answer_id=@id", conn);
+
                     conn.Open();
+
                     command.Parameters.AddWithValue("@id", ID);
+
                     try
                     {
-
                         command.ExecuteNonQuery();
                     }
                     catch(Exception ex)
@@ -74,14 +81,16 @@ namespace DriversLicenseTestApp
             else
             {
                 MessageBox.Show("Please Select Record to Delete");
-            }  
+            }
         }
 
         private void linkBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
+
             AdministratorOptions ao = new AdministratorOptions();
             ao.ShowDialog();
+
             this.Close();
         }
 

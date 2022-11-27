@@ -34,7 +34,7 @@ namespace DriversLicenseTestApp
             textbox.Name = "tb_" + (count + 1);
             panelAnswers.Controls.Add(textbox);
 
-            // create checkbox to check if answer is right 
+            // create checkbox to check if answer is right
             CheckBox checkbox = new CheckBox();
             checkbox.Location = new System.Drawing.Point(220, 25 * count);
             checkbox.AutoSize = true;
@@ -71,7 +71,7 @@ namespace DriversLicenseTestApp
             Button btn_del = (sender as Button);
 
             int i = int.Parse(btn_del.Name.Split('_')[1]); // find button index
-           
+
             TextBox txt = (TextBox)panelAnswers.Controls.Find("tb_" + i, true)[0];
             CheckBox chb = (CheckBox)panelAnswers.Controls.Find("chb_" + i, true)[0];
             Button upl = (Button)panelAnswers.Controls.Find("btnUpload_" + i, true)[0];
@@ -92,7 +92,6 @@ namespace DriversLicenseTestApp
                 Button up = (Button)panelAnswers.Controls.Find("btnUpload_" + controlIndex, true)[0];
                 Button del = (Button)panelAnswers.Controls.Find("btnDelete_" + controlIndex, true)[0];
 
-
                 if (controlIndex > index)
                 {
                     up.Top = up.Top - 25;
@@ -101,6 +100,7 @@ namespace DriversLicenseTestApp
                     ch.Top = ch.Top - 25;
                 }
             }
+
             // dispose dynamic objects
             txt.Dispose();
             chb.Dispose();
@@ -117,14 +117,14 @@ namespace DriversLicenseTestApp
             open.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
             if (open.ShowDialog() == DialogResult.OK)
             {
-                imagePaths.Add(open.FileName); 
-            }  
+                imagePaths.Add(open.FileName);
+            }
         }
 
-        // insert question into database 
+        // insert question into database
         public void insertQuestion()
         {
-            if (conn.State == ConnectionState.Open) 
+            if (conn.State == ConnectionState.Open)
             {
                 string queryQuestion = @"INSERT INTO questions(question) VALUES(@question)";
                 string queryType = @"INSERT INTO question_type(type) VALUES(@type)";
@@ -141,6 +141,7 @@ namespace DriversLicenseTestApp
                 {
                     MessageBox.Show(ex.Message);
                 }
+
                 // insert question type into database
                 command = new MySqlCommand(queryType, conn);
                 command.Parameters.AddWithValue("@type", cbType.Text);
@@ -152,7 +153,8 @@ namespace DriversLicenseTestApp
                 {
                     MessageBox.Show(ex.Message);
                 }
-                //insert answers 
+
+                //insert answers
                 int count = panelAnswers.Controls.OfType<TextBox>().ToList().Count;
                 for (int i = 1; i <= count; i++)
                 {
@@ -179,44 +181,50 @@ namespace DriversLicenseTestApp
                             MessageBox.Show(ex.Message);
                         }
                     }
-                    //  TO DO  .... if() picture is uploaded add it to database as well
                 }
          }
+
         // button "добави" click event
         private void buttonAddQuestion_Click(object sender, EventArgs e)
         {
-            using (conn = new MySqlConnection(connStr)) 
+            using (conn = new MySqlConnection(connStr))
             {
                 conn.Open();
                 insertQuestion();
             }
+
             DialogResult result = MessageBox.Show("Добавихте въпрос успешно! Искате ли да се върнете назад?", "Съобщение", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 this.Hide();
+
                 AdministratorOptions ao = new AdministratorOptions();
                 ao.ShowDialog();
+
                 this.Close();
-            }  
+            }
         }
-        // go back 
+
+        // go back
         private void linkBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
+
             AdministratorOptions ao = new AdministratorOptions();
             ao.ShowDialog();
+
             this.Close();
         }
+
         // upload image to question
         private void uploadImageQuestion_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 imagePaths.Add(open.FileName);
-            }  
+            }
         }
     }
 }

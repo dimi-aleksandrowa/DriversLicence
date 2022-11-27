@@ -17,7 +17,7 @@ namespace DriversLicenseTestApp.Models
 
         public Question() { }
 
-        public Question(string questionString, string type, string picture) 
+        public Question(string questionString, string type, string picture)
         {
             this.questionString = questionString;
             this.type = type;
@@ -28,11 +28,13 @@ namespace DriversLicenseTestApp.Models
         {
             questionString = this.questionString;
         }
+
         public void setType(string type)
         {
             type = this.type;
         }
-        public void setPicture(string picture) 
+
+        public void setPicture(string picture)
         {
             picture = this.picture;
         }
@@ -41,10 +43,12 @@ namespace DriversLicenseTestApp.Models
         {
             return this.questionString;
         }
+
         public string getType()
         {
             return this.type;
         }
+
         public string getPicture()
         {
             return this.picture;

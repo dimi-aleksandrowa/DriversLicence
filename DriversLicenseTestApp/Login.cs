@@ -16,22 +16,27 @@ namespace DriversLicenseTestApp
         {
             InitializeComponent();
         }
+
         // login as user
         private void buttonLoginAsUser_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             UserLogin ul = new UserLogin();
             ul.ShowDialog();
+
             this.Close();
         }
+
         //login as administrator
         private void buttonLoginAsAdmin_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             AdministratorLogin al = new AdministratorLogin();
             al.ShowDialog();
+
             this.Close();
         }
-
     }
 }

@@ -16,7 +16,7 @@ namespace DriversLicenseTestApp.Models
         public List<Question> Questions { get; set; }
         public Answer() { }
 
-        public Answer(string answerString, string isCorrect) 
+        public Answer(string answerString, string isCorrect)
         {
             this.answerString = answerString;
             this.isCorrect = isCorrect;
@@ -32,25 +32,27 @@ namespace DriversLicenseTestApp.Models
         {
             answerString = this.answerString;
         }
+
         public void setIsCorrect(string isCorrect)
         {
             isCorrect = this.isCorrect;
         }
-        
+
         public void setPicture(string picture)
         {
             picture = this.picture;
         }
 
-        public string getAnswer() 
+        public string getAnswer()
         {
             return this.answerString;
         }
+
         public string getIsCorrect()
         {
             return this.isCorrect;
         }
-    
+
         public string getPicture()
         {
             return this.picture;

@@ -24,8 +24,7 @@ namespace DriversLicenseTestApp
             tbPassword.PasswordChar = '*';
             tbRepeatPassword.PasswordChar = '*';
         }
-        
-       
+
         private void bCreateAccount_Click(object sender, EventArgs e)
         {
             using (connection = new MySqlConnection(connStr))
@@ -36,7 +35,6 @@ namespace DriversLicenseTestApp
                 {
                     MessageBox.Show("Please, fill all fields!");
                 }
-
                 else if (tbPassword.Text == tbRepeatPassword.Text)
                 {
                     insertUser(new User(tbUsername.Text, tbPassword.Text, tbEmail.Text));
@@ -47,24 +45,26 @@ namespace DriversLicenseTestApp
                 }
             }
         }
+
          public void insertUser(User user)
         {
-            string queryCreateUser = "INSERT INTO users(username,password,email)" + " VALUES(@username,@password,@email)";
+            string queryCreateUser = "INSERT INTO users(username, password, email)" + " VALUES(@username, @password, @email)";
             if(connection.State == ConnectionState.Open)
-            { 
+            {
                 command = new MySqlCommand(queryCreateUser, connection);
                 command.Parameters.AddWithValue("@username", tbUsername.Text);
                 command.Parameters.AddWithValue("@password", tbPassword.Text);
                 command.Parameters.AddWithValue("@email", tbEmail.Text);
             }
-            try 
-            { 
+
+            try
+            {
                 command.ExecuteNonQuery();
-                
+
                 MessageBox.Show("You created a new account!");
             }
-            catch(Exception ex) 
-            { 
+            catch(Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -72,10 +72,11 @@ namespace DriversLicenseTestApp
          private void bBack_Click(object sender, EventArgs e)
          {
              this.Hide();
+
              UserLogin ul = new UserLogin();
              ul.ShowDialog();
+
              this.Close();
          }
-
     }
 }

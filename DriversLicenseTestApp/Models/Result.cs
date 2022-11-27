@@ -20,15 +20,17 @@ namespace DriversLicenseTestApp.Models
             score = this.score;
             user = this.user;
         }
-        
+
         public void setName(string name)
         {
             name = this.name;
         }
-        public void setScore(int score) 
+
+        public void setScore(int score)
         {
             score = this.score;
         }
+
         public void setUser(User user)
         {
             user = this.user;
@@ -38,10 +40,12 @@ namespace DriversLicenseTestApp.Models
         {
             return this.name;
         }
+
         public int getScore()
         {
             return this.score;
         }
+
         public User getUser()
         {
             return this.user;

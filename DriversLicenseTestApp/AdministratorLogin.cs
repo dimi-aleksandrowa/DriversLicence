@@ -28,7 +28,6 @@ namespace DriversLicenseTestApp
         MySqlConnection connection;
         MySqlCommand command;
 
-
         //login button clicked
         private void bAdminLog_Click(object sender, EventArgs e)
         {
@@ -43,8 +42,10 @@ namespace DriversLicenseTestApp
                 else if (logIn(new Admin(tbAdminUsername.Text, tbAdminPassword.Text)))
                 {
                     this.Hide();
+
                     AdministratorOptions ao = new AdministratorOptions();
                     ao.ShowDialog();
+
                     this.Close();
                 }
                 else
@@ -56,7 +57,7 @@ namespace DriversLicenseTestApp
 
         private bool logIn(Admin admin)
         {
-            // check if log in is successful 
+            // check if log in is successful
             string queryLogIn = @"SELECT * FROM admins WHERE username = '" + tbAdminUsername.Text + "' AND password  = '" + tbAdminPassword.Text + "'";
 
             if (connection.State == ConnectionState.Open)
@@ -67,6 +68,7 @@ namespace DriversLicenseTestApp
             {
                 MySqlDataReader row;
                 row = command.ExecuteReader();
+
                 if (row.HasRows)
                 {
                     return true;
@@ -105,7 +107,7 @@ namespace DriversLicenseTestApp
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }   
+                }
         }
         private void bGenerateAccount_Click(object sender, EventArgs e)
         {
@@ -119,8 +121,10 @@ namespace DriversLicenseTestApp
         private void linkBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
+
             Login log = new Login();
             log.ShowDialog();
+
             this.Close();
         }
     }

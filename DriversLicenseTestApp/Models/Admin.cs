@@ -19,7 +19,7 @@ namespace DriversLicenseTestApp.Models
             password = this.password;
         }
 
-        public void setUsername(string username) 
+        public void setUsername(string username)
         {
             username = this.username;
         }
@@ -28,10 +28,11 @@ namespace DriversLicenseTestApp.Models
             password = this.password;
         }
 
-        public string getUsername() 
+        public string getUsername()
         {
             return this.username;
         }
+
         public string getPassword()
         {
             return this.password;
