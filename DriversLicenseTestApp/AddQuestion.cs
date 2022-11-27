@@ -162,10 +162,13 @@ namespace DriversLicenseTestApp
                 {
                     TextBox tb;
                     CheckBox chb;
+                    
                     tb = (TextBox)panelAnswers.Controls.Find("tb_" + i, true)[0];
                     chb = (CheckBox)panelAnswers.Controls.Find("chb_" + i, true)[0];
+                    
                     command = new MySqlCommand(queryAnswers, conn);
                     command.Parameters.AddWithValue("@answer", tb.Text);
+                    
                         if (chb.Checked)
                         {
                             command.Parameters.AddWithValue("@isCorrect", chb.Text);
@@ -174,6 +177,7 @@ namespace DriversLicenseTestApp
                         {
                             command.Parameters.AddWithValue("@isCorrect", "грешен");
                         }
+                        
                         try
                         {
                             command.ExecuteNonQuery();
