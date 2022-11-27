@@ -115,6 +115,7 @@ namespace DriversLicenseTestApp
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            
             if (open.ShowDialog() == DialogResult.OK)
             {
                 imagePaths.Add(open.FileName);
@@ -133,6 +134,7 @@ namespace DriversLicenseTestApp
                 // insert question into database
                 command = new MySqlCommand(queryQuestion, conn);
                 command.Parameters.AddWithValue("@question", tbQuestion.Text);
+                
                 try
                 {
                     command.ExecuteNonQuery();
@@ -194,6 +196,7 @@ namespace DriversLicenseTestApp
             }
 
             DialogResult result = MessageBox.Show("Добавихте въпрос успешно! Искате ли да се върнете назад?", "Съобщение", MessageBoxButtons.YesNo);
+            
             if (result == DialogResult.Yes)
             {
                 this.Hide();
@@ -221,6 +224,7 @@ namespace DriversLicenseTestApp
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            
             if (open.ShowDialog() == DialogResult.OK)
             {
                 imagePaths.Add(open.FileName);
